@@ -34,7 +34,7 @@ for j = 1:11  % bit per symbol: 1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.
 
             %数据的不同调制方式产生：这里把2^3（8QAM）的形式单独拿出来设置，是为了实现最优的星型8QAM星座图
             if j == 7 || j == 8 || j == 9 %fsk            
-                Tx.DataConstel = fskmod(Tx.DataSymbol,M/64,50,j,15000);
+                Tx.DataConstel = fskmod(Tx.DataSymbol,M/64,log2(M/64),2,8192);
             elseif j > 9
                 Tx.DataConstel = Tx.DataSymbol;
             elseif M ~= 8
