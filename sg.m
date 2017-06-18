@@ -2,7 +2,6 @@
 % clc;
 figure;
 
-
 lineStyle = ['o-';  'h-';  '*-';  '.-';  'x-';  's-';  'd-';  '^-';  'p-'; '+-'; '<-'];
 
 % signal generation;如果想要进行100组独立的测试，可以建立100次循环，产生100组独立的数据
@@ -15,9 +14,10 @@ for j = 1:11  % bit per symbol: 1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.
         System.BitPerSymbol = j - 8;
     end
     snr = -5:30;  %SNR信噪比的设置，单位dB
+    
     fs1 = zeros(1,16);
-
     acc = zeros(1, length(snr));
+    
     for snrIndex= 1:length(snr)
         cnt = 0;
         for repeat = 1:100
@@ -94,8 +94,7 @@ for j = 1:11  % bit per symbol: 1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.
 %             subplot(1,4,snrIndex); 
 %             plot(Rx.Signal,'.');
 
-            type = classify(Rx.Signal);
-            
+            type = classify(Rx.Signal);            
             if type == j
                 cnt = cnt +1;
             end
@@ -113,10 +112,9 @@ for j = 1:11  % bit per symbol: 1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.
     %         center = cluster(gmfit, si);
     %         hold on;
     %         plot(center, '.');
-        
+    
         end
         acc(snrIndex) = cnt/100;
-
     end
 %     hold on
 %     plot(fs1,lineStyle(j,:));

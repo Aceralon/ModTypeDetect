@@ -1,5 +1,4 @@
 function [type] = classify(x)
-
     type = -1;
 %     1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.64QAM; 7.2FSK; 
 %     8.4FSK; 9.8FSK;  10.4ASK; 11.8ASK
