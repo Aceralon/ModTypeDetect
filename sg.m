@@ -41,6 +41,7 @@ for j = 1:11  % bit per symbol: 1. BPSK; 2. QPSK; 3.8QAM; 4. 16QAM; 5. 32QAM; 6.
             elseif M ~= 8
     %             h = modem.qammod('M', M, 'SymbolOrder', 'Gray');
     %             Tx.DataConstel = modulate(h,Tx.DataSymbol);
+                    %matlab版本在2016以前的请使用上面两行代码
                     Tx.DataConstel = qammod(Tx.DataSymbol, M, 'gray');
             else
                     tmp = Tx.DataSymbol;
